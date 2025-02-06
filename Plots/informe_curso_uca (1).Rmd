@@ -13,7 +13,7 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
-Este ejercicio se encuentra depositado en Zenodo y se puede consultar en el enlace  
+Este ejercicio se encuentra depositado en Zenodo y se puede consultar en el enlace 10.5281/zenodo.14826697 
 ```{r setup, include = FALSE}
 
 knitr::opts_chunk$set(echo = FALSE)
