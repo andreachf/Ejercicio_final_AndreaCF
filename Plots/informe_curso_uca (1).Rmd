@@ -1,9 +1,8 @@
 ---
 title: "Ejercicio práctico Rmarkdown"
 author:
-    - names: "María Hurtado de Mendoza"
-
-date: "`r Sys.Date()`" 
+    - names: "Andrea Chamorro Francisco"
+date: "06/02/2025" 
 output: 
     distill::distill_article:
         highlight: kate
@@ -14,7 +13,7 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
-
+Este ejercicio se encuentra depositado en Zenodo y se puede consultar en el enlace  
 ```{r setup, include = FALSE}
 
 knitr::opts_chunk$set(echo = FALSE)
@@ -31,21 +30,19 @@ data <- read.csv("data/top10s.csv")
 # Informe hits de Spotify 2010-2019
 
 ## Datos
-
-Top Spotify Songs 2010-2019
-
+Los datos que se han analizado muestran los mayores éxitos de Spotify entre los años 2010 y 2019. Fuente:
 <https://www.kaggle.com/datasets/leonardopena/top-spotify-songs-from-20102019-by-year/>
 
 ## Artistas con más éxitos
-
+En el análisis se muestran los artistas que tienen más canciones en el top de Spotify durante los años 2010-2019.
 ```{r top_artists}
 
 data %>% dplyr::count(artist) %>% arrange(desc(n)) %>% head()
 
 ```
 
-## Estilos con más éxitos
-
+## Estilos musicales con más éxitos
+Se muestran los géneros musicales que más han aparecido en los rankings de Spotify en la última década
 ```{r top_genres}
 
 data %>% dplyr::count(top.genre) %>% arrange(desc(n)) %>% head()
@@ -53,10 +50,12 @@ data %>% dplyr::count(top.genre) %>% arrange(desc(n)) %>% head()
 ```
 
 ## Tendencia de la duración de los hits
-
+Para poder estudiar si las canciones han ido reduciendo su duración con el paso de los años, hacemos una gráfica con la duración promedio de los éxitos por año, junto con una regresión lineal.
 ```{r duration_trend, fig.width=8, fig.height=6}
 
 plot(dur ~ year, data = data)
 abline(lm(dur ~ year, data = data))
 
 ```
+## Discusión del gráfico
+Como la pendiente de regresión lineal va hacia abajo, es decir, es negativa, nos indica que la duración de las canciones se ha ido reduciendo con el paso de los años.
